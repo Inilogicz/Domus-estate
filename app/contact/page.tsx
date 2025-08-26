@@ -156,8 +156,8 @@ export default function ContactPage() {
 
               <div>
                 <h3 className="font-playfair text-2xl font-normal text-gray-800 mb-4">Talk to us</h3>
-                <p className="text-gray-600 mb-2 font-playfair">+44 432 123 123</p>
-                <p className="text-gray-600 font-playfair">hello@domusresidential.com</p>
+                <p className="text-gray-600 mb-2 font-playfair">+44 758 532 6851</p>
+                <p className="text-gray-600 font-playfair">hello@domus-res.co.uk.</p>
               </div>
 
               <div>
