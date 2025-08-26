@@ -117,9 +117,7 @@ const customers = [
     </section>
 
       {/* Services Section */}
-      <section>
-      {/* The grid stacks columns on mobile by default (grid-cols-1) */}
-      {/* and creates the 3-column layout on medium screens and up */}
+     <section>
       <div className="grid grid-cols-1 md:grid-cols-[25%_50%_25%]">
         {services.map((service, index) => (
           <motion.div
@@ -131,14 +129,14 @@ const customers = [
             className="relative group"
           >
             <div
-              // Responsive height: h-80 on mobile, h-96 on desktop
               className="h-80 md:h-96 bg-cover bg-center bg-no-repeat overflow-hidden filter grayscale"
               style={{
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${service.imageUrl}')`,
               }}
             >
-              <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
-                <h3 className="font-playfair text-xl font-bold text-center">
+              {/* --- THIS IS THE UPDATED PART --- */}
+              <div className="absolute inset-0 flex flex-col justify-end px-8 pb-3 text-white">
+                <h3 className="font-playfair text-lg font-bold text-center">
                   {service.title}
                 </h3>
               </div>
@@ -210,10 +208,10 @@ const customers = [
           className="flex flex-col items-center"
         >
           {/* Main Heading */}
-          <h2 className="font-playfair text-4xl md:text-5xl font-normal text-stone-200 mb-8 leading-snug">
-            Contact us today to get a
+          <h2 className="font-playfair text-2xl md:text-xl font-normal text-stone-200 mb-8 leading-snug">
+            Contact our dedicated team today
             <br />
-            personal property manager
+            and begin your bespoke management journey
           </h2>
 
           {/* Contact Button with Animation */}

@@ -1,3 +1,6 @@
+// This is the complete and final code for your frontend contact page.
+// File Location: /app/contact/page.tsx
+
 "use client"
 
 import type React from "react"
@@ -9,53 +12,81 @@ import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Instagram, Twitter, Facebook, Linkedin } from "lucide-react"
 import Image from "next/image"
 
+// A type to manage the different states of our form submission
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
 export default function ContactPage() {
+  // State to hold the data from the form's input fields
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission logic
-    console.log("Form submitted:", formData)
-  }
+  // State variables to track the form's submission status and feedback messages
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
 
+  // This function updates the formData state whenever a user types in an input
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
+  // This function is triggered when the user clicks the "SEND" button
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevents the browser from reloading the page
+    setStatus("submitting"); // Set status to "submitting" to show a loading state
+
+    try {
+      // Send the form data to our backend API route at /api/contact
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // If the server responds with a success status (e.g., 200)
+        setStatus("success");
+        setFeedbackMessage(data.message);
+        setFormData({ name: "", email: "", message: "" }); // Clear the form fields
+      } else {
+        // If the server responds with an error status (e.g., 400, 500)
+        setStatus("error");
+        setFeedbackMessage(data.message || "An error occurred.");
+      }
+    } catch (error) {
+      // If there's a network error or the fetch itself fails
+      console.error("Form submission error:", error);
+      setStatus("error");
+      setFeedbackMessage("Failed to send message. Please try again later.");
+    }
+  };
+
+  // Data for the social media links
   const socialLinks = [
     { icon: "/ig.png", href: "#", label: "Instagram" },
     { icon: "/x.png", href: "#", label: "Twitter" },
     { icon: '/fb.png', href: "#", label: "Facebook" },
     { icon: "/x.png", href: "#", label: "LinkedIn" },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
+      <HeroSection title="Contact us" body="" />
 
-      {/* Hero Section with reduced height */}
-      <HeroSection
-        title="Contact us"
-        body=""
-        // Use padding to control the height instead of a fixed min-height
-        // className="py-24"
-      />
-
-      {/* Contact Form Section */}
-      <section className="py-20 px-15">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-30">
-            {/* Contact Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+            {/* Left Column: Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -66,7 +97,7 @@ export default function ContactPage() {
                 Please feel free to contact us and we will get back to you as soon as we can.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-2">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -79,8 +110,7 @@ export default function ContactPage() {
                     placeholder="Type your full name"
                     value={formData.name}
                     onChange={handleChange}
-                    // Adjusted input styling to match the image
-                    className="border-0 border-b  rounded-none px-2 py-6 bg-[#DAD1D721] focus:border-gray-600 focus:ring-0 border-b-black border-1"
+                    className="w-full border-0 border-b rounded-none px-2 py-6 bg-gray-50 focus:border-gray-600 focus:ring-0 border-b-black"
                     required
                   />
                 </motion.div>
@@ -97,7 +127,7 @@ export default function ContactPage() {
                     placeholder="Type your email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="border-0 border-b  rounded-none px-2 py-6 bg-[#DAD1D721] focus:border-gray-600 focus:ring-0 border-b-black border-1"
+                    className="w-full border-0 border-b rounded-none px-2 py-6 bg-gray-50 focus:border-gray-600 focus:ring-0 border-b-black"
                     required
                   />
                 </motion.div>
@@ -114,7 +144,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="border-0 border-b  rounded-none px-2 py-3 bg-[#DAD1D721] focus:border-gray-600 focus:ring-0 resize-none border-b-black border-1"
+                    className="w-full border-0 border-b rounded-none px-2 py-3 bg-gray-50 focus:border-gray-600 focus:ring-0 resize-none border-b-black"
                     required
                   />
                 </motion.div>
@@ -128,16 +158,25 @@ export default function ContactPage() {
                 >
                   <Button
                     type="submit"
-                    // Adjusted button color to match the image
-                    className="w-full bg-slate-300 hover:bg-slate-400/90 text-gray-800 py-6 rounded-none font-medium tracking-widest"
+                    disabled={status === 'submitting'}
+                    className="w-full bg-slate-300 hover:bg-slate-400/90 text-gray-800 py-6 rounded-none font-medium tracking-widest disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    SEND
+                    {status === 'submitting' ? 'SENDING...' : 'SEND'}
                   </Button>
                 </motion.div>
               </form>
+
+              {/* This area will display success or error messages to the user */}
+              {feedbackMessage && (
+                <p className={`mt-4 text-sm font-medium ${
+                  status === 'success' ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {feedbackMessage}
+                </p>
+              )}
             </motion.div>
 
-            {/* Contact Information */}
+            {/* Right Column: Contact Information */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -157,7 +196,7 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-playfair text-2xl font-normal text-gray-800 mb-4">Talk to us</h3>
                 <p className="text-gray-600 mb-2 font-playfair">+44 758 532 6851</p>
-                <p className="text-gray-600 font-playfair">hello@domus-res.co.uk.</p>
+                <p className="text-gray-600 font-playfair">hello@domus-res.co.uk</p>
               </div>
 
               <div>

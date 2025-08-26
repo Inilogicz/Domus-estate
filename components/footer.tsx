@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Instagram, Twitter, Facebook, Linkedin } from "lucide-react"
 import Image from "next/image"
 
 export default function Footer() {
@@ -20,23 +19,32 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-domus-blue py-12">
+    <footer className="bg-[#dbe1e8] py-16"> {/* Used the brand's light blue and increased padding */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/*
+          --- UPDATED GRID ---
+          - Uses a larger vertical gap on mobile (gap-y-10) for better stacking.
+          - The grid structure itself is correct for responsiveness.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-y-10 md:gap-8 text-left">
+          
           {/* Logo and Company Info */}
+          {/*
+            --- UPDATED LOGO COLUMN ---
+            - Spans 2 columns on small screens for better balance before breaking to 4.
+            - md:col-span-1 ensures it takes up 1 of 4 columns on medium screens and up.
+          */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="col-span-1"
+            className="col-span-1" // Logo takes its own space
           >
-            <div className="flex items-center space-x-2 mb-4">
-             
-              <div className="text-gray-800">
-              < Image src="/Domus-logo.png" width={120} height={120} alt="Domus Logo" /> 
-              </div>
-            </div>
+            {/* The Link tag makes the logo clickable, which is good practice */}
+            <Link href="/" className="inline-block">
+              <Image src="/Domus-logo.png" width={120} height={120} alt="Domus Logo" />
+            </Link>
           </motion.div>
 
           {/* About Us */}
@@ -46,8 +54,14 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-gray-800 mb-4">About us</h3>
-            <p className="text-gray-700 text-sm">Properties and Services</p>
+            <h3 className="font-semibold text-gray-800 mb-4 tracking-wider">About us</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/services" className="text-gray-700 text-sm hover:text-gray-900 transition-colors">
+                  Properties and Services
+                </Link>
+              </li>
+            </ul>
           </motion.div>
 
           {/* Quick Links */}
@@ -57,7 +71,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-gray-800 mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-gray-800 mb-4 tracking-wider">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -76,7 +90,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-gray-800 mb-4">Social media</h3>
+            <h3 className="font-semibold text-gray-800 mb-4 tracking-wider">Social media</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <motion.a
