@@ -40,43 +40,44 @@ const customers = [
       {/* Hero Section */}
       <HeroSection title="DOMUS" subtitle="RESIDENTIAL" body="PROPERTY & SERVICE" showScroll={true} />
 
-      <section className="bg-[#dbe1e8] py-20 px-15">
+      <section className="bg-[#dbe1e8] py-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* This relative container is the key to positioning the star */}
             <div className="relative">
-              {/* The star is now positioned absolutely within the relative container */}
-              <div className="absolute -left-2 -top-2">
+              {/* Star is now hidden on mobile and appears on medium screens and up */}
+              <div className="absolute -left-2 -top-2 hidden md:block">
                 <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2.17991 31.03L19.1778 31.1912C19.3812 31.1951 19.5803 31.2505 19.7565 31.3522C19.9327 31.4539 20.0802 31.5987 20.1853 31.7729L28.8239 46.4129C28.9566 46.6344 29.1579 46.8066 29.3973 46.9034C29.6367 47.0003 29.9011 47.0165 30.1506 46.9497C30.4 46.8828 30.6209 46.7366 30.7798 46.533C30.9387 46.3294 31.0269 46.0796 31.0311 45.8214L31.1923 28.8236C31.1962 28.6201 31.2516 28.421 31.3534 28.2448C31.4551 28.0686 31.5998 27.9211 31.7741 27.816L46.414 19.1775C46.6355 19.0447 46.8077 18.8434 46.9046 18.604C47.0014 18.3646 47.0177 18.1002 46.9508 17.8508C46.884 17.6013 46.7377 17.3805 46.5342 17.2216C46.3306 17.0627 46.0808 16.9744 45.8226 16.9702L28.8247 16.809C28.6213 16.8051 28.4222 16.7497 28.246 16.648C28.0698 16.5462 27.9223 16.4015 27.8172 16.2273L19.1787 1.58731C19.0459 1.36583 18.8446 1.19362 18.6052 1.09677C18.3658 0.999909 18.1014 0.983669 17.8519 1.05051C17.6025 1.11734 17.3816 1.26362 17.2227 1.46719C17.0638 1.67076 16.9756 1.92055 16.9714 2.17875L16.8102 19.1766C16.8063 19.38 16.7509 19.5791 16.6491 19.7553C16.5474 19.9315 16.4027 20.0791 16.2285 20.1842L1.58847 28.8227C1.36699 28.9555 1.19478 29.1568 1.09793 29.3962C1.00107 29.6356 0.98483 29.9 1.05167 30.1494C1.1185 30.3989 1.26478 30.6197 1.46835 30.7786C1.67192 30.9375 1.92171 31.0257 2.17991 31.03Z" fill="url(#paint0_linear_52_468)" stroke="#FCD34D" stroke-width="0.609375" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2.17991 31.03L19.1778 31.1912C19.3812 31.1951 19.5803 31.2505 19.7565 31.3522C19.9327 31.4539 20.0802 31.5987 20.1853 31.7729L28.8239 46.4129C28.9566 46.6344 29.1579 46.8066 29.3973 46.9034C29.6367 47.0003 29.9011 47.0165 30.1506 46.9497C30.4 46.8828 30.6209 46.7366 30.7798 46.533C30.9387 46.3294 31.0269 46.0796 31.0311 45.8214L31.1923 28.8236C31.1962 28.6201 31.2516 28.421 31.3534 28.2448C31.4551 28.0686 31.5998 27.9211 31.7741 27.816L46.414 19.1775C46.6355 19.0447 46.8077 18.8434 46.9046 18.604C47.0014 18.3646 47.0177 18.1002 46.9508 17.8508C46.884 17.6013 46.7377 17.3805 46.5342 17.2216C46.3306 17.0627 46.0808 16.9744 45.8226 16.9702L28.8247 16.809C28.6213 16.8051 28.4222 16.7497 28.246 16.648C28.0698 16.5462 27.9223 16.4015 27.8172 16.2273L19.1787 1.58731C19.0459 1.36583 18.8446 1.19362 18.6052 1.09677C18.3658 0.999909 18.1014 0.983669 17.8519 1.05051C17.6025 1.11734 17.3816 1.26362 17.2227 1.46719C17.0638 1.67076 16.9756 1.92055 16.9714 2.17875L16.8102 19.1766C16.8063 19.38 16.7509 19.5791 16.6491 19.7553C16.5474 19.9315 16.4027 20.0791 16.2285 20.1842L1.58847 28.8227C1.36699 28.9555 1.19478 29.1568 1.09793 29.3962C1.00107 29.6356 0.98483 29.9 1.05167 30.1494C1.1185 30.3989 1.26478 30.6197 1.46835 30.7786C1.67192 30.9375 1.92171 31.0257 2.17991 31.03Z" fill="url(#paint0_linear_52_468)" stroke="#FCD34D" strokeWidth="0.609375" strokeLinecap="round" strokeLinejoin="round"/>
                   <defs>
                     <linearGradient id="paint0_linear_52_468" x1="9.33142" y1="9.33593" x2="38.6711" y2="38.6643" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#FCD966"/>
-                      <stop offset="0.5" stop-color="#FCD966"/>
-                      <stop offset="1" stop-color="#FCCD34"/>
+                      <stop stopColor="#FCD966"/>
+                      <stop offset="0.5" stopColor="#FCD966"/>
+                      <stop offset="1" stopColor="#FCCD34"/>
                     </linearGradient>
                   </defs>
                 </svg>
               </div>
-              {/* Padding is added to the text to make room for the star */}
-              <span className="pl-10 text-gray-800 font-medium tracking-widest text-2xl md:text-2xl">
+              {/* Padding is now responsive: none on mobile, pl-10 on medium screens and up */}
+              <span className="md:pl-10 text-gray-800 font-medium tracking-widest text-2xl md:text-2xl">
                 TRUSTED
               </span>
             </div>
-            <h2 className="pl-10 font-playfair text-4xl md:text-6xl font-normal text-gray-800 mt-4">
+            {/* Responsive padding also applied here */}
+            <h2 className="md:pl-10 font-playfair text-4xl md:text-6xl font-normal text-gray-800 mt-4">
               PROPERTY
               <br />
               MANAGEMENT
             </h2>
           </motion.div>
 
-          {/* This right column remains exactly as you had it */}
+          {/* Right Column */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -88,7 +89,8 @@ const customers = [
               <p className="text-gray-700 text-left mb-8 text-base md:text-lg max-w-md">
                 We build relationships based on integrity and mutual respect. Let us show you what it means to have a true partner in property management.
               </p>
-              <div className="flex flex-col items-left space-x-8">
+              {/* Corrected flexbox logic: use space-y for vertical spacing */}
+              <div className="flex flex-col items-start space-y-8">
                 <div className="flex -space-x-4">
                   {customers.map((customer) => (
                     <img
@@ -103,7 +105,7 @@ const customers = [
                   </div>
                 </div>
                 
-                <div className="mt-4 text-left justify-left">
+                <div>
                   <div className="text-5xl text-left font-bold text-gray-800">2k+</div>
                   <div className="text-gray-700 text-left text-sm tracking-wider">Happy Customers</div>
                 </div>
@@ -115,8 +117,9 @@ const customers = [
     </section>
 
       {/* Services Section */}
-     <section>
-      {/* The grid container is now full-width */}
+      <section>
+      {/* The grid stacks columns on mobile by default (grid-cols-1) */}
+      {/* and creates the 3-column layout on medium screens and up */}
       <div className="grid grid-cols-1 md:grid-cols-[25%_50%_25%]">
         {services.map((service, index) => (
           <motion.div
@@ -128,18 +131,19 @@ const customers = [
             className="relative group"
           >
             <div
-              className="h-96 bg-cover bg-center bg-no-repeat overflow-hidden filter grayscale"
+              // Responsive height: h-80 on mobile, h-96 on desktop
+              className="h-80 md:h-96 bg-cover bg-center bg-no-repeat overflow-hidden filter grayscale"
               style={{
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${service.imageUrl}')`,
               }}
             >
-              <div className="absolute inset-0 flex flex-col justify-end   p-8 text-white">
-                <h3 className="font-playfair mx-auto text-xl font-bold">
+              <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
+                <h3 className="font-playfair text-xl font-bold text-center">
                   {service.title}
                 </h3>
               </div>
             </div>
-          </motion.div> 
+          </motion.div>
         ))}
       </div>
     </section>
