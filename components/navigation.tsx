@@ -10,7 +10,8 @@ export default function Navigation() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About us", href: "/about" },
+    { name: "About us", href: "/about" }, 
+    { name: "Services", href: "/services" },
     { name: "Contact us", href: "/contact" },
   ]
 
@@ -56,7 +57,7 @@ export default function Navigation() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center mx-auto space-x-8">
             {/* Using a different array for desktop if needed */}
             {[
               { name: "Home", href: "/" },
