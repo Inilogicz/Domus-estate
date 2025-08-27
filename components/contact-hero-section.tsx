@@ -13,23 +13,29 @@ interface HeroSectionProps {
 
 export default function HeroSection({ title, subtitle, body, showScroll = false }: HeroSectionProps) {
   return (
-    <section className="relative h-100 flex items-center justify-center overflow-hidden">
+    <section className="relative h-100 flex items-center justify-center overflow-hidden ">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/domus-bg.png')`,
+          backgroundImage: `url('/bg5.jpg')`,
         }}
       />
 
+      {/* --- NEW: DARK OVERLAY --- */}
+      {/* This semi-transparent black layer sits on top of the image but behind the text. */}
+      {/* z-[5] places it between the background (z-0) and the text content (z-10). */}
+      <div className="absolute inset-0 bg-black/60 z-[5]" />
+
       {/* Content */}
-      <div className="relative z-10 justify-left items-left text-left text-white px-6">
+      {/* The z-10 on this container ensures it stays on top of the new overlay. */}
+      <div className="relative z-10 text-center text-white px-6 w-full max-w-7xl ">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-            <h1 className="font-playfair text-[#F5DABD] text-3xl md:text-5xl lg:text-5xl font-bold tracking-wider mb-4 text-left">{title}</h1>
+            <h1 className="font-nanum text-[#F5DABD] text-3xl md:text-5xl lg:text-6xl font-bold tracking-wider mb-4 ">{title}</h1>
           {subtitle && (
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -59,11 +65,11 @@ export default function HeroSection({ title, subtitle, body, showScroll = false 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10" // Added z-10 to ensure it's on top
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+            transition={{ duration: 2, repeat: Infinity }}
             className="text-[#F5DABD] cursor-pointer"
           >
             <ChevronDown size={32} />

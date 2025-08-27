@@ -1,6 +1,3 @@
-// This is the complete and final code for your frontend contact page.
-// File Location: /app/contact/page.tsx
-
 "use client"
 
 import type React from "react"
@@ -72,10 +69,10 @@ export default function ContactPage() {
 
   // Data for the social media links
   const socialLinks = [
-    { icon: "/ig.png", href: "#", label: "Instagram" },
-    { icon: "/x.png", href: "#", label: "Twitter" },
-    { icon: '/fb.png', href: "#", label: "Facebook" },
-    { icon: "/x.png", href: "#", label: "LinkedIn" },
+    { icon: "/ig.png", href: "https://www.instagram.com/domus_residential?igsh=Z3Qxa2JocWRjNTAz&utm_source=qr", label: "Instagram" },
+    { icon: "/x.png", href: "https://x.com/HelloResid64891", label: "X" },
+    // { icon: '/fb.png', href: "#", label: "Facebook" },
+    { icon: "/in.png", href: "www.linkedin.com/in/domus-residential-b8a877380", label: "LinkedIn" },
   ];
 
   return (
@@ -184,18 +181,18 @@ export default function ContactPage() {
               viewport={{ once: true }}
               className="space-y-12"
             >
-              <div>
+              {/* <div>
                 <h3 className="font-playfair text-2xl font-normal text-gray-800 mb-4">Visit us</h3>
                 <p className="text-gray-600 font-playfair">
                   258 Starbuck road, south
                   <br />
                   london 2166
                 </p>
-              </div>
+              </div> */}
 
               <div>
                 <h3 className="font-playfair text-2xl font-normal text-gray-800 mb-4">Talk to us</h3>
-                <p className="text-gray-600 mb-2 font-playfair">+44 758 532 6851</p>
+                <p className="text-gray-600 mb-2 font-playfair">+44 07585 459549</p>
                 <p className="text-gray-600 font-playfair">hello@domus-res.co.uk</p>
               </div>
 

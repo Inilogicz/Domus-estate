@@ -1,6 +1,3 @@
-// This is the complete, updated code for your HeroSection component.
-// File Location: components/hero-section.tsx
-
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"

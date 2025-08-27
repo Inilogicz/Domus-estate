@@ -12,10 +12,10 @@ export default function Footer() {
   ]
 
   const socialLinks = [
-    { icon: "/ig.png", href: "#", label: "Instagram" },
-    { icon: "/x.png", href: "#", label: "Twitter" },
-    { icon: '/fb.png', href: "#", label: "Facebook" },
-    { icon: "/x.png", href: "#", label: "LinkedIn" },
+    { icon: "/ig.png", href: "https://www.instagram.com/domus_residential?igsh=Z3Qxa2JocWRjNTAz&utm_source=qr", label: "Instagram" },
+    { icon: "/x.png", href: "https://x.com/HelloResid64891", label: "X" },
+    // { icon: '/fb.png', href: "#", label: "Facebook" },
+    { icon: "/in.png", href: "www.linkedin.com/in/domus-residential-b8a877380", label: "LinkedIn" },
   ]
 
   return (
@@ -59,7 +59,7 @@ export default function Footer() {
             className="ml-3"
           >
           <div className=" md:ml-9">
-            <h3 className="font-semibold  text-gray-800 mb-4 tracking-wider">About us</h3>
+            <h3 className=" text-black-200 mb-4 tracking-wider">About us</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/services" className="text-gray-700 text-sm hover:text-gray-900 transition-colors">
@@ -78,7 +78,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="ml-3"
           >
-            <h3 className="font-semibold text-gray-800 mb-4 tracking-wider">Quick Links</h3>
+            <h3 className="text-black-200 mb-4 tracking-wider">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -98,7 +98,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="ml-3"
           >
-            <h3 className="font-semibold text-gray-800 mb-4 tracking-wider">Social media</h3>
+            <h3 className="text-black-200 mb-4 tracking-wider">Social media</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <motion.a
