@@ -42,9 +42,12 @@ export default function Footer() {
             className="col-span-1" // Logo takes its own space
           >
             {/* The Link tag makes the logo clickable, which is good practice */}
-            <Link href="/" className="inline-block">
-              <Image src="/Domus-logo.png" width={120} height={120} alt="Domus Logo" />
-            </Link>
+            <div className="flex items-center">
+              <Link href="/" className="mr-3">
+                <Image src="/Domus-logo.png" width={100} height={100} alt="Domus Logo" />
+              </Link>
+      
+            </div>
           </motion.div>
 
           {/* About Us */}
@@ -53,8 +56,10 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
+            className="ml-3"
           >
-            <h3 className="font-semibold text-gray-800 mb-4 tracking-wider">About us</h3>
+          <div className=" md:ml-9">
+            <h3 className="font-semibold  text-gray-800 mb-4 tracking-wider">About us</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/services" className="text-gray-700 text-sm hover:text-gray-900 transition-colors">
@@ -62,6 +67,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
+          </div>
           </motion.div>
 
           {/* Quick Links */}
@@ -70,6 +76,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            className="ml-3"
           >
             <h3 className="font-semibold text-gray-800 mb-4 tracking-wider">Quick Links</h3>
             <ul className="space-y-2">
@@ -89,6 +96,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
+            className="ml-3"
           >
             <h3 className="font-semibold text-gray-800 mb-4 tracking-wider">Social media</h3>
             <div className="flex space-x-4">

@@ -1,24 +1,24 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Playfair_Display, Inter } from "next/font/google"
+import { Montserrat, Nanum_Myeongjo } from "next/font/google";
 import "./globals.css"
 
-const playfair = Playfair_Display({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-playfair",
-})
+  variable: '--font-montserrat', // Create a CSS variable for this font
+  display: 'swap',
+});
 
-const inter = Inter({
+const nanumMyeongjo = Nanum_Myeongjo({
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-})
+  weight: "700", // Only load the bold weight we need for the hero title
+  variable: '--font-nanum-myeongjo', // Create a CSS variable
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "DOMUS RESIDENTIAL - Property Services",
   description: "Trusted property management and residential services",
-  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -27,8 +27,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-inter antialiased">{children}</body>
+    <html lang="en" className={`${montserrat.variable} ${nanumMyeongjo.variable}`}>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Nanum+Myeongjo:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+      <body>{children}</body>
     </html>
   )
 }
