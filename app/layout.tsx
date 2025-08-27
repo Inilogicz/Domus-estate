@@ -19,6 +19,9 @@ const nanumMyeongjo = Nanum_Myeongjo({
 export const metadata: Metadata = {
   title: "DOMUS RESIDENTIAL - Property Services",
   description: "Trusted property management and residential services",
+  icons: {
+    icon: '/Domus-logo.png',
+  },
 }
 
 export default function RootLayout({
