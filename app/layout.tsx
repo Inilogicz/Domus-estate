@@ -1,18 +1,18 @@
-import type React from "react"
 import type { Metadata } from "next"
 import { Montserrat, Nanum_Myeongjo } from "next/font/google";
 import "./globals.css"
 
+// Configure the fonts using next/font/google
 const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: '--font-montserrat', // Create a CSS variable for this font
+  variable: '--font-montserrat', // Creates a CSS variable for Tailwind
   display: 'swap',
 });
 
 const nanumMyeongjo = Nanum_Myeongjo({
   subsets: ["latin"],
-  weight: "700", // Only load the bold weight we need for the hero title
-  variable: '--font-nanum-myeongjo', // Create a CSS variable
+  weight: "700", // Only loads the bold weight we need
+  variable: '--font-nanum-myeongjo', // Creates a CSS variable for Tailwind
   display: 'swap',
 });
 
@@ -31,9 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${montserrat.variable} ${nanumMyeongjo.variable}`}>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Nanum+Myeongjo:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+       
       <body>{children}</body>
     </html>
   )
