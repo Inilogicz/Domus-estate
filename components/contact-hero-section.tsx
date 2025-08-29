@@ -29,7 +29,7 @@ export default function HeroSection({ title, subtitle, body, showScroll = false 
 
       {/* Content */}
       {/* The z-10 on this container ensures it stays on top of the new overlay. */}
-      <div className="relative z-10 text-center text-white px-6 w-full max-w-7xl ">
+      <div className="relative z-10 text-center text-white px-6 w-full max-w-7xl mx-auto ">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

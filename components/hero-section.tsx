@@ -44,7 +44,7 @@ export default function HeroSection({
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden mx-auto">
       <AnimatePresence>
         <motion.div
           key={currentImageIndex}
@@ -59,7 +59,7 @@ export default function HeroSection({
 
       <div className="absolute inset-0 bg-black/50 z-[5]" />
 
-      <div className="relative z-10 text-center text-white px-6">
+      <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

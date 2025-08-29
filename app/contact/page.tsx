@@ -69,8 +69,8 @@ export default function ContactPage() {
 
   // Data for the social media links
   const socialLinks = [
-    { icon: "/ig.png", href: "https://www.instagram.com/domus_residential?igsh=Z3Qxa2JocWRjNTAz&utm_source=qr", label: "Instagram" },
-    { icon: "/x.png", href: "https://x.com/HelloResid64891", label: "X" },
+    { icon: "/instagram.png", href: "https://www.instagram.com/domus_residential?igsh=Z3Qxa2JocWRjNTAz&utm_source=qr", label: "Instagram" },
+    { icon: "/twitter.png", href: "https://x.com/HelloResid64891", label: "X" },
     // { icon: '/fb.png', href: "#", label: "Facebook" },
     { icon: "/in.png", href: "www.linkedin.com/in/domus-residential-b8a877380", label: "LinkedIn" },
   ];
@@ -90,7 +90,7 @@ export default function ContactPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <p className="text-gray-700 mb-8 leading-relaxed font-playfair text-lg">
+              <p className="text-gray-700 mb-8 leading-relaxed font-nanum text-lg">
                 Please feel free to contact us and we will get back to you as soon as we can.
               </p>
 
@@ -173,43 +173,52 @@ export default function ContactPage() {
               )}
             </motion.div>
 
-            {/* Right Column: Contact Information */}
+            {/* Right Column: Contact Information with Background Image and Overlay */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="space-y-12"
+              className="relative p-8  overflow-hidden flex flex-col justify-between" // Added relative, p-8, rounded-lg, overflow-hidden, flex-col, justify-between
+              style={{ minHeight: '350px' }} // Ensure enough height for the content and image
             >
-              {/* <div>
-                <h3 className="font-playfair text-2xl font-normal text-gray-800 mb-4">Visit us</h3>
-                <p className="text-gray-600 font-playfair">
-                  258 Starbuck road, south
-                  <br />
-                  london 2166
-                </p>
-              </div> */}
+              {/* Background Image */}
+              <Image
+                src="/bg4.jpg" // **CHANGE THIS TO YOUR IMAGE PATH**
+                alt="Contact us background"
+                layout="fill"
+                objectFit="cover"
+                className="absolute inset-0 z-0"
+              />
 
-              <div>
-                <h3 className="font-playfair text-2xl font-normal text-gray-800 mb-4">Talk to us</h3>
-                <p className="text-gray-600 mb-2 font-playfair">+44 07585 459549</p>
-                <p className="text-gray-600 font-playfair">hello@domus-res.co.uk</p>
-              </div>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black opacity-40 z-10"></div> {/* Adjust opacity as needed */}
 
-              <div>
-                <div className="flex space-x-6">
-                  {socialLinks.map((social) => (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="text-gray-800 hover:text-gray-600 transition-colors"
-                      aria-label={social.label}
-                    >
-                      <Image src={social.icon} alt={social.label} width={20} height={20} />
-                    </motion.a>
-                  ))}
+              {/* Content Wrapper */}
+              <div className="relative z-20 text-white space-y-12 h-full flex flex-col justify-center mx-auto">
+                {/* Your "Talk to us" section */}
+                <div>
+                  <h3 className="font-nanum text-2xl font-normal mb-4">Talk to us</h3>
+                  <p className="mb-2 font-nanum">+44 07585 459549</p>
+                  <p className="font-nanum">hello@domus-res.co.uk</p>
+                </div>
+
+                {/* Social Links */}
+                <div>
+                  <div className="flex space-x-6">
+                    {socialLinks.map((social) => (
+                      <motion.a
+                        key={social.label}
+                        href={social.href}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="text-white hover:text-gray-300 transition-colors" // Changed text color for contrast
+                        aria-label={social.label}
+                      >
+                        {/* <Image src={social.icon} alt={social.label} width={20} height={20} className="bg-white rounded-lg" /> Increased icon size slightly */}
+                      </motion.a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>

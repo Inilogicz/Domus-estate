@@ -19,34 +19,22 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-[#dbe1e8] py-16"> {/* Used the brand's light blue and increased padding */}
+    <footer className="bg-[#dbe1e8] py-16">
       <div className="max-w-7xl mx-auto px-6">
-        {/*
-          --- UPDATED GRID ---
-          - Uses a larger vertical gap on mobile (gap-y-10) for better stacking.
-          - The grid structure itself is correct for responsiveness.
-        */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-y-10 md:gap-8 text-left">
-          
+
           {/* Logo and Company Info */}
-          {/*
-            --- UPDATED LOGO COLUMN ---
-            - Spans 2 columns on small screens for better balance before breaking to 4.
-            - md:col-span-1 ensures it takes up 1 of 4 columns on medium screens and up.
-          */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="col-span-1" // Logo takes its own space
+            className="col-span-1"
           >
-            {/* The Link tag makes the logo clickable, which is good practice */}
             <div className="flex items-center">
               <Link href="/" className="mr-3">
                 <Image src="/Domus-logo.png" width={100} height={100} alt="Domus Logo" />
               </Link>
-      
             </div>
           </motion.div>
 
@@ -58,16 +46,16 @@ export default function Footer() {
             viewport={{ once: true }}
             className="ml-3"
           >
-          <div className=" md:ml-9">
-            <h3 className=" text-black-200 mb-4 tracking-wider">About us</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/services" className="text-gray-700 text-sm hover:text-gray-900 transition-colors">
-                  Properties and Services
-                </Link>
-              </li>
-            </ul>
-          </div>
+            <div className=" md:ml-9">
+              <h3 className=" text-black-200 mb-4 tracking-wider">About us</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/services" className="text-gray-700 text-sm hover:text-gray-900 transition-colors">
+                    Properties and Services
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </motion.div>
 
           {/* Quick Links */}
@@ -99,17 +87,17 @@ export default function Footer() {
             className="ml-3"
           >
             <h3 className="text-black-200 mb-4 tracking-wider">Social media</h3>
-            <div className="flex space-x-4">
+            <div className="flex space-x-2"> {/* Keep space-x-4 for overall spacing */}
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                  className="flex items-center justify-center w-8 h-8 rounded-full bg-transparent hover:bg-gray-200 transition-colors" // Added classes for alignment and hover effect
                   aria-label={social.label}
                 >
-                  <Image src={social.icon} alt={social.label} width={20} height={20} />
+                  <Image src={social.icon} alt={social.label} width={20} height={20} className="object-contain" /> {/* object-contain ensures icon fits */}
                 </motion.a>
               ))}
             </div>

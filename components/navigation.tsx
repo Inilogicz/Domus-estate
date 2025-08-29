@@ -46,9 +46,9 @@ export default function Navigation() {
         transition={{ duration: 0.6 }}
         className="absolute top-0 left-0 right-0 z-50 px-6 py-6"
       >
-        <div className="max-w-7xl flex items-center justify-between">
+        <div className="max-w-7xl flex items-center mx-auto relative"> {/* Added relative for positioning */}
           {/* Logo */}
-          <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+          <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }} className="absolute left-0"> {/* Positioned absolutely to the left */}
             <Link href="/" className="flex items-center space-x-2">
               <div className="text-white">
                 <Image src="/Domus-logo.png" width={80} height={80} alt="Domus Logo" />
@@ -56,9 +56,8 @@ export default function Navigation() {
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center mx-auto space-x-8">
-            {/* Using a different array for desktop if needed */}
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex flex-grow justify-center"> {/* Added flex-grow and justify-center */}
             {[
               { name: "Home", href: "/" },
               { name: "About us", href: "/about" },
@@ -70,6 +69,7 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="mx-4" // Added horizontal margin for spacing
               >
                 <Link
                   href={item.href}
@@ -82,7 +82,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white p-2 z-50">
+          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white p-2 z-50 absolute right-0"> {/* Positioned absolutely to the right for mobile */}
             <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
               <span className={`block h-0.5 w-full bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
               <span className={`block h-0.5 w-full bg-white transition-all duration-200 ${isOpen ? "opacity-0" : ""}`} />
