@@ -5,7 +5,7 @@ import Navigation from "@/components/navigation"
 import HeroSection from "@/components/hero-section"
 import Footer from "@/components/footer"
 
-// --- Data moved outside the component for better organization and performance ---
+
 const heroImages = [
   '/bg1.jpg', '/bg2.jpg', '/bg3.jpg', '/bg4.jpg', '/bg5.jpg', '/bg6.jpg'
 ];
