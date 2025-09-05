@@ -53,7 +53,7 @@ export default function Navigation() {
             <Link href="/" className="flex items-center space-x-2">
               <div className="text-white">
                 <Image
-                  src="/domus-logo.png"
+                  src="Domus-logo.png"
                   width={300}
                   height={40}
                   alt="Domus Logo"
