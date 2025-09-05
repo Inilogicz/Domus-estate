@@ -23,7 +23,7 @@ export function ServiceCard({ title, image, href }: ServiceCardProps) {
       <div className="p-6 bg-[#C5D5E273] text-center mx-auto">
         <h3 className="text-xl font-semibold text-gray-900 mb-4">{title}</h3>
         <a
-          href={href}
+          href={'/book'}
           className="inline-flex items-center text-gray-700 hover:text-gray-900 font-medium transition-colors"
         >
           Book now

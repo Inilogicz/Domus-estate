@@ -72,7 +72,7 @@ export default function HeroSection({ title, subtitle, body, showScroll = false 
             transition={{ duration: 2, repeat: Infinity }}
             className="text-[#F5DABD] cursor-pointer"
           >
-            <ChevronDown size={32} />
+            {/* <ChevronDown size={32} /> */}
           </motion.div>
         </motion.div>
       )}
